@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <locale.h>
 
 #define MAX_LINE_LENGTH 100
 #define OUTPUT_FILE "SituacaoFinal.csv"
@@ -22,6 +23,7 @@ const char* determinar_situacao(float media) {
 }
 
 int main() {
+    setlocale(LC_ALL, "");
     FILE *entrada, *saida;
     char linha[MAX_LINE_LENGTH];
 
