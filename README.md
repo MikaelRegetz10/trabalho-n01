@@ -1,5 +1,5 @@
-Trabalho prático n° 01 - Manipulando arquivos
+<h1>Trabalho prático n° 01 - Manipulando arquivos</h1>
 
-Matéria: Estrutura de dados
-Prof: Marcelo Eustaquio
-Grupo: Samuel Galvão Fernandes, Mikael de Oliveira Regetz, Vitor Guilherme Figueiredo Sampaio, Robson Pereira de Moura Júnior
+<P>Matéria: Estrutura de dados</P>
+<P>Prof: Marcelo Eustaquio</P>
+<P>Grupo: Samuel Galvão Fernandes, Mikael de Oliveira Regetz, Vitor Guilherme Figueiredo Sampaio, Robson Pereira de Moura Júnior</P>
