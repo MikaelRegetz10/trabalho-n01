@@ -5,6 +5,15 @@
 
 #define MAX_LINE_LENGTH 100
 #define OUTPUT_FILE "SituacaoFinal.csv"
+#define MAX_NOTAS 10
+
+typedef struct {
+    char nome[MAX_LINE_LENGTH];
+    char telefone[MAX_LINE_LENGTH];
+    char curso[MAX_LINE_LENGTH];
+    float notas[MAX_NOTAS];
+    int numNotas;
+} Aluno;
 
 float calcular_media(float notas[], int numNotas) {
     float soma = 0;
@@ -41,25 +50,27 @@ int main() {
     }
 
     while (fgets(linha, sizeof(linha), entrada)) {
-        char *nome, *telefone, *curso, *notaStr;
-        float notas[10];
-        int numNotas = 0;
+        Aluno aluno; 
 
-        nome = strtok(linha, ",");
-        telefone = strtok(NULL, ",");
-        curso = strtok(NULL, ",");
-        notaStr = strtok(NULL, ",");
-
-        while (notaStr != NULL) {
-            notas[numNotas++] = atof(notaStr);
-            notaStr = strtok(NULL, ",");
+        char *token = strtok(linha, ",");
+        strcpy(aluno.nome, token);
+        token = strtok(NULL, ",");
+        strcpy(aluno.telefone, token);
+        token = strtok(NULL, ",");
+        strcpy(aluno.curso, token);
+        aluno.numNotas = 0;
+        token = strtok(NULL, ",");
+        while (token != NULL && aluno.numNotas < MAX_NOTAS) {
+            aluno.notas[aluno.numNotas++] = strtof(token, NULL);
+            token = strtok(NULL, ",");
         }
 
-        float media = calcular_media(notas, numNotas);
+        float media = calcular_media(aluno.notas, aluno.numNotas);
 
         const char* situacao = determinar_situacao(media);
 
-        fprintf(saida, "%s, %.2f, %s\n", nome, media, situacao);
+        // Escreve os dados do aluno no arquivo de saída
+        fprintf(saida, "%s, %.2f, %s\n", aluno.nome, media, situacao);
     }
 
     fclose(entrada);
